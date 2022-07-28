@@ -24,3 +24,30 @@ def rule_3(item):
 
 for item in return_element(1, 10, rule_3):
     print(item)
+
+x = return_element(1, 10, rule_1)
+
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+
+#-----------------------------------------------
+
+def get_next_item(start: int | float, step: int | float, n: int, func):
+    items = (func(start, step, i) for i in range(n))
+
+    while True:
+        try:
+            yield next(items)
+        except:
+            break
+
+def arithmetic_progression(a, dx, n):
+    return a + n * dx
+
+def geom_progression(b, q, n):
+    return b * q ** (n - 1)
+
+print(*get_next_item(1, 2, 20, arithmetic_progression))
