@@ -1,30 +1,16 @@
 import random
 
-seq = [random.randint(1, 100) for i in range(100)]
+seq_1 = [random.randint(1, 100) for i in range(100)]
+seq_2 = (i for i in range(100))
 
 def main(seq, func):
-    tmp = 0
-    for item in seq:
-        tmp += func(item)
-    return tmp
+    return sum(func(i) for i in seq)
 
 def num_pow(n):
     return n ** 2
 
-x = main(seq, num_pow)
+def num_div(n):
+    return n // 2
 
-print(x)
-
-#----------------------------------------------
-
-seq = [random.randint(1, 100) for i in range(100)]
-
-def main(seq, func):
-	tmp = 0
-	for i in seq:
-		tmp += func(i)
-	return tmp
-
-x = main(seq, lambda n: n ** 2)
-
-print(x)
+print(main(seq_1, num_pow))
+print(main(seq_2, num_div))
