@@ -1,4 +1,4 @@
-import time
+import timeit
 
 def fibonacci(n):
     if n == 1:
@@ -32,24 +32,11 @@ def get_fibonacci():
         return storage[n]
     return calculation
 
-start_1 = time.time()
-
-for i in range(1, 35):
-    print(fibonacci(i))
-
-print(f'Time: {time.time() - start_1}')
-print('---------------------------------')
-
+print(timeit.timeit('fibonacci(30)', number = 5, setup='from __main__ import fibonacci'))
 x = get_fibonacci()
+print(timeit.timeit('x(30)', number=5, setup='from __main__ import x'))
 
-start_2 = time.time()
-
-for i in range(1, 35):
-    print(x(i))
-
-print(f'Time: {time.time() - start_2}')
-
-#------------------------------------------------------------
+#-------------------------------------------------------------------------
 
 def fibonacci():
 	numbers = [0, 1]
@@ -69,7 +56,3 @@ def fibonacci():
 		return next_item
 		
 	return get_number 
-	
-x = fibonacci()
-
-print(x(7))
